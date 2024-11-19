@@ -1,5 +1,6 @@
 require 'sinatra'
 
 get '/' do
-  'fernandojose.dev HOMEPAGE'
+    @title = 'fernandojose.dev'
+    erb :index, layout: :page
 end
