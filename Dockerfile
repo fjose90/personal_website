@@ -29,7 +29,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle config --global frozen 1
 
 # Instala gems para produção
-RUN bundle install --without development test
+RUN bundle config set without 'development test' && bundle install
 
 # Copia o restante da aplicação
 COPY . .
