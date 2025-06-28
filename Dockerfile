@@ -26,10 +26,10 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 
 # Garante que Gemfile e lock estão sincronizados
-RUN bundle config --global frozen 1
-
 # Instala gems para produção
-RUN bundle config set without 'development test' && bundle install
+RUN bundle config --global frozen 1 && \
+    bundle config set without 'development test' && \
+    bundle install
 
 # Copia o restante da aplicação
 COPY . .
