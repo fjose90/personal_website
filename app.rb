@@ -4,5 +4,15 @@ require 'sinatra'
 
 get '/' do
   @title = 'fernandojose.dev'
-  erb :index, layout: :page
+  erb :home, layout: :page
+end
+
+get '/about' do
+  @title = 'sobre'
+  erb :about, layout: :page
+end
+
+get '/projects' do
+  @title = 'projetos'
+  'Precisa implementar'
 end
