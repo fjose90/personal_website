@@ -2,17 +2,17 @@
 FROM ruby:3.4.4-slim
 
 # Instala dependências necessárias para gems nativas (como nokogiri, pg etc.)
-RUN apt-get update -qq && \
+RUN apt-get update -qq &&
     apt-get install -y --no-install-recommends \
-    build-essential \
-    libpq-dev \
-    git \
-    curl \
-    locales && \
+        build-essential \
+        libpq-dev \
+        git \
+        curl \
+        locales &&
     rm -rf /var/lib/apt/lists/*
 
 # Configura locale para UTF-8
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen &&
     locale-gen
 
 ENV LANG=en_US.UTF-8 \
@@ -27,9 +27,9 @@ COPY Gemfile Gemfile.lock ./
 
 # Garante que Gemfile e lock estão sincronizados
 # Instala gems para produção
-RUN bundle config --global frozen 1 && \
-    bundle config set without 'development test' && \
-    bundle install
+RUN bundle config --global frozen 1 &&
+    bundle config set without 'development test' &&
+    bundle install --jobs 4 --retry 3
 
 # Copia o restante da aplicação
 COPY . .
