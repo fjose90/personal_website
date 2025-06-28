@@ -16,9 +16,9 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.8'
-  gem 'minitest-reporters', '~> 1.1'
   gem 'nokogiri', '~> 1.16'
   gem 'rack-test', '~> 2.1'
   gem 'rake', '~> 13.2'
+  gem 'rspec', '~> 3.13'
+  gem 'simplecov', '~> 0.22.0', require: false
 end
