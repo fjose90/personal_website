@@ -1,15 +1,15 @@
-# spec/spec_helper.rb
+# frozen_string_literal: true
 
 # Inicia SimpleCov para medir cobertura de código (antes de qualquer require)
 require 'simplecov'
 SimpleCov.start do
-  add_filter '/spec/'  # ignora testes na cobertura
+  add_filter '/spec/' # ignora testes na cobertura
 end
 
 # Mostra a cobertura no terminal ao fim dos testes (opcional)
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::HTMLFormatter
-])
+                                                                 SimpleCov::Formatter::HTMLFormatter
+                                                               ])
 
 # Ambiente de teste
 ENV['RACK_ENV'] ||= 'test'
@@ -41,5 +41,5 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   # Persistência de status de teste (útil para --only-failures)
-  config.example_status_persistence_file_path = ".rspec_status"
+  config.example_status_persistence_file_path = '.rspec_status'
 end
