@@ -14,17 +14,17 @@
 
 <body>
     <div class="layout">
-<header class="header">
+<header>
 <img src="./images/awesome-logo.svg" alt="">
 
 <%= erb :_nav %>
 
 </header>
-<main class="content">
+<main>
     <%= yield %>
 
 </main>
-<footer class="footer">
+<footer>
     <p>&copy; <%= Time.now.year %> <%= @title %> - Todos os direitos reservados.</p>
 
 </footer>
